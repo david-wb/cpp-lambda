@@ -1,0 +1,12 @@
+*.zip
+.vscode
+.devcontainer
+dockerfiles
+scripts
+Dockerfile
+hello
+hello.zip
+aws-lambda-cpp
+README.md
+response.json
+.DS_Store
