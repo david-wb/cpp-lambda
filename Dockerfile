@@ -29,11 +29,15 @@ COPY ./ ./
 
 RUN mkdir build \
   && cd build \
+  # Compile the lambda function
   && cmake3 .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=${LAMBDA_TASK_ROOT}/out \
   && make \
+  # Create the zip archive
   && make aws-lambda-package-hello \
+  # Extract the binaries from the zip archive to where the lambda/provided image expects them to be.
   && unzip hello.zip -d ${LAMBDA_TASK_ROOT} \
   && chmod +x ${LAMBDA_TASK_ROOT}/bootstrap \
   && mv ${LAMBDA_TASK_ROOT}/bootstrap ${LAMBDA_RUNTIME_DIR}/bootstrap
 
+# Set CMD to the path to the lambda function binary. This argument is passed to the `boostrap` entrypiont script.
 CMD ["bin/hello"]

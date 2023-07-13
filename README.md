@@ -5,7 +5,7 @@ This guide describes how to create a docker-based C++ AWS Lambda function. It al
 
 ## The Dockerfile
 
-Please see the contents of `Dockerfile`. Here is a summary of how it works.
+Please see the contents of [Dockerfile](Dockerfile). Here is a summary of how it works.
 
 * Inherits from `public.ecr.aws/lambda/provided:al2` image which is based on Amazon Linux 2.
 * Clones and compiles the [aws-lambda-cpp](https://github.com/awslabs/aws-lambda-cpp) which provides the AWS Lambda runtime library for C++.
